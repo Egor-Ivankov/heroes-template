@@ -1,4 +1,4 @@
-import {useHttp} from '../../hooks/http.hook';
+import { useHttp } from '../../hooks/http.hook';
 import { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -9,9 +9,9 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import './heroesList.scss';
 
 const HeroesList = () => {
-    const {heroes, heroesLoadingStatus} = useSelector(state => state);
+    const { heroes, heroesLoadingStatus } = useSelector(state => state);
     const dispatch = useDispatch();
-    const {request} = useHttp();
+    const { request } = useHttp();
 
     useEffect(() => {
         dispatch(heroesFetching());
@@ -28,11 +28,11 @@ const HeroesList = () => {
             .then(data => console.log(data, "Hero deleted"))
             .then(dispatch(heroesDelete(id)))
             .catch((err) => console.log(err))
-            // eslint-disable-next-line
+        // eslint-disable-next-line
     }, [request]);
 
     if (heroesLoadingStatus === "loading") {
-        return <Spinner/>;
+        return <Spinner />;
     } else if (heroesLoadingStatus === "error") {
         return <h5 className="text-center mt-5">Ошибка загрузки</h5>
     }
@@ -42,10 +42,10 @@ const HeroesList = () => {
             return <h5 className="text-center mt-5">Героев пока нет</h5>
         }
 
-        return arr.map(({id, ...props}) => {
+        return arr.map(({ id, ...props }) => {
             return (
                 <CSSTransition classNames="hero" timeout={500} key={id}>
-                    <HeroesListItem {...props} onDelete={() => onDelete(id)}/>
+                    <HeroesListItem {...props} onDelete={() => onDelete(id)} />
                 </CSSTransition>
             )
         })

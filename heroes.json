@@ -1,17 +1,37 @@
 {
   "heroes": [
     {
-      "id": 1,
-      "name": "Первый герой",
-      "description": "Первый герой в рейтинге!",
-      "element": "fire"
+      "id": "93a3bf47439",
+      "name": "gio",
+      "description": "uo",
+      "element": "water"
     }
   ],
   "filters": [
-    "all",
-    "fire",
-    "water",
-    "wind",
-    "earth"
+    {
+      "value": "all",
+      "text": "Все",
+      "className": "btn-outline-dark"
+    },
+    {
+      "value": "fire",
+      "text": "Огонь",
+      "className": "btn-danger"
+    },
+    {
+      "value": "water",
+      "text": "Вода",
+      "className": "btn-primary"
+    },
+    {
+      "value": "wind",
+      "text": "Ветер",
+      "className": "btn-success"
+    },
+    {
+      "value": "earth",
+      "text": "Земля",
+      "className": "btn-secondary"
+    }
   ]
 }
