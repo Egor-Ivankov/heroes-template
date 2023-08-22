@@ -1,10 +1,28 @@
 {
   "heroes": [
     {
-      "id": "93a3bf47439",
-      "name": "gio",
-      "description": "uo",
+      "id": "47f52f83a50",
+      "name": "Fire man",
+      "description": "Fire balls",
+      "element": "fire"
+    },
+    {
+      "id": "7f52f83a500",
+      "name": "Water man",
+      "description": "Water balls",
       "element": "water"
+    },
+    {
+      "id": "f52f83a5004",
+      "name": "Wind man",
+      "description": "Wind balls",
+      "element": "wind"
+    },
+    {
+      "id": "52f83a50049",
+      "name": "Earth man",
+      "description": "Earth balls",
+      "element": "earth"
     }
   ],
   "filters": [

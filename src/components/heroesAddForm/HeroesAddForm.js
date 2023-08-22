@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { heroesFetching, heroesAdd } from "../../actions";
+import { useDispatch, useSelector } from "react-redux";
+import { heroesAdd } from "../../actions";
 import { useHttp } from "../../hooks/http.hook";
 import { uid } from "uid";
 
@@ -19,23 +19,47 @@ const HeroesAddForm = () => {
     const [description, setDescription] = useState('');
     const [element, setElement] = useState('');
     const dispatch = useDispatch();
-
-    const newHero = {
-        id: uid(),
-        name,
-        description,
-        element
-    }
+    const {filters, filtersLoadingStatus    } = useSelector(state => state);
 
     const {request} = useHttp();
     
     const onHandleSubmit = (e) => {
         e.preventDefault();
-        dispatch(heroesFetching());
+
+        const newHero = {
+            id: uid(),
+            name,
+            description,
+            element
+        }
+
         request('http://localhost:3001/heroes', "POST", JSON.stringify(newHero))
+            .then(res => console.log(res, 'Отправка успешна'))
             .then(dispatch(heroesAdd(newHero)))
             .catch(err => console.log(err))
+
+        setName('');
+        setDescription('');
+        setElement('');
     }
+
+    const renderFilters = (filters, status) => {
+        if (status === 'loading') {
+            return <option>Загрузка элементов</option>
+        } else if (status === "error") {
+            return <option>Ошибка загрузки</option>
+        }
+        if (filters && filters.length > 0) {
+            return filters.map(({value, text}) => {
+                //eslint-disable-next-line
+                if (value === 'all') return;
+
+                return <option key={value} value={value} >{text}</option>
+            })
+        }
+    }
+
+    const elements = renderFilters(filters, filtersLoadingStatus);
 
     return (
         <form className="border p-4 shadow-lg rounded" onSubmit={onHandleSubmit}>
@@ -78,11 +102,8 @@ const HeroesAddForm = () => {
                     value={element}
                     onChange={(e) => setElement(e.target.value)}
                     >
-                    <option >Я владею элементом...</option>
-                    <option value="fire">Огонь</option>
-                    <option value="water">Вода</option>
-                    <option value="wind">Ветер</option>
-                    <option value="earth">Земля</option>
+                    <option value="">Я владею элементом...</option>
+                    {elements}
                 </select>
             </div>
 
