@@ -1,4 +1,11 @@
 import { createReducer } from "@reduxjs/toolkit";
+import {
+    heroesFetching,
+    heroesFetched,
+    heroesFetchingError,
+    heroesDelete,
+    heroesAdd
+} from '../actions/index';
 
 const initialState = {
     heroes: [],
@@ -7,20 +14,20 @@ const initialState = {
 
 const heroes = createReducer(initialState, builder => {
     builder
-        .addCase('HEROES_FETCHING', state => {
+        .addCase(heroesFetching, state => {
             state.heroesLoadingStatus = 'loading';
         })
-        .addCase('HEROES_FETCHED', (state, action) => {
+        .addCase(heroesFetched, (state, action) => {
             state.heroes = action.payload;
             state.heroesLoadingStatus = 'idle';
         })
-        .addCase('HEROES_FETCHING_ERROR', (state) => {
+        .addCase(heroesFetchingError, (state) => {
             state.heroesLoadingStatus = 'error';
         })
-        .addCase('HERO_DELETE', (state, action) => {
+        .addCase(heroesDelete, (state, action) => {
             state.heroes = state.heroes.filter(item => item.id !== action.payload);
         })
-        .addCase('HERO_ADD', (state, action) => {
+        .addCase(heroesAdd, (state, action) => {
             state.heroes.push(action.payload);
         })
         .addDefaultCase(() => { });

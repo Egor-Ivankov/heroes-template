@@ -1,4 +1,10 @@
 import { createReducer } from "@reduxjs/toolkit";
+import {
+    filtersFetching,
+    filtersFetched,
+    filtersFetchingError,
+    getFilter
+} from '../actions/index';
 
 const initialState = {
     filters: [],
@@ -6,19 +12,21 @@ const initialState = {
     activeFilter: 'all',
 }
 
+
+
 const filters = createReducer(initialState, builder => {
     builder
-        .addCase('FILTERS_FETCHING', state => {
+        .addCase(filtersFetching, state => {
             state.filtersLoadingStatus = 'loading';
         })
-        .addCase('FILTERS_FETCHED', (state, action) => {
+        .addCase(filtersFetched, (state, action) => {
             state.filters = action.payload;
             state.filtersLoadingStatus = 'idle';
         })
-        .addCase('FILTERS_FETCHING_ERROR', state => {
+        .addCase(filtersFetchingError, state => {
             state.filtersLoadingStatus = 'error';
         })
-        .addCase('GET_ACTIVE_FILTER', (state, action) => {
+        .addCase(getFilter, (state, action) => {
             state.activeFilter = action.payload;
         })
         .addDefaultCase(() => { });
