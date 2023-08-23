@@ -1,25 +1,22 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHttp } from '../../hooks/http.hook';
-import { filtersFetched, getFilter, filtersFetching, filtersFetchingError } from '../../actions';
+import { fetchFilters, getFilter } from '../../actions';
 import Spinner from '../spinner/Spinner';
 import classNames from 'classnames';
 
 const HeroesFilters = () => {
-    const { filters, filtersLoadingStatus, activeFilter } = useSelector(state => state);
+    const { filters, filtersLoadingStatus, activeFilter } = useSelector(state => state.filters);
     const dispatch = useDispatch();
     const { request } = useHttp();
 
     useEffect(() => {
-        dispatch(filtersFetching());
-        request("http://localhost:3001/filters")
-            .then(data => dispatch(filtersFetched(data)))
-            .catch(() => dispatch(filtersFetchingError()))
+        dispatch(fetchFilters(request));
         // eslint-disable-next-line
     }, []);
 
     if (filtersLoadingStatus === "loading") {
-        return <Spinner/>;
+        return <Spinner />;
     } else if (filtersLoadingStatus === "error") {
         return <h5 className="text-center mt-5">Ошибка загрузки</h5>
     }
@@ -28,25 +25,25 @@ const HeroesFilters = () => {
         if (arr.length === 0) {
             return <h5 className="text-center mt-5">Фильтры не найдены</h5>
         }
-        return arr.map(({className, value, text}) => {
+        return arr.map(({ className, value, text }) => {
 
             const btnClass = classNames('btn', className, {
                 'active': value === activeFilter
-            }); 
+            });
 
             return (
-                <button 
+                <button
                     key={value}
                     id={value}
                     className={btnClass}
                     onClick={() => dispatch(getFilter(value))}
-                    >
-                        {text}
+                >
+                    {text}
                 </button>
             )
         })
     };
-    const elements  = renderFilters(filters);
+    const elements = renderFilters(filters);
     return (
         <div className="card shadow-lg mt-4">
             <div className="card-body">

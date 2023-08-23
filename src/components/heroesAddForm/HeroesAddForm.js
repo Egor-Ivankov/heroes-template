@@ -19,10 +19,10 @@ const HeroesAddForm = () => {
     const [description, setDescription] = useState('');
     const [element, setElement] = useState('');
     const dispatch = useDispatch();
-    const {filters, filtersLoadingStatus    } = useSelector(state => state);
+    const { filters, filtersLoadingStatus } = useSelector(state => state.filters);
 
-    const {request} = useHttp();
-    
+    const { request } = useHttp();
+
     const onHandleSubmit = (e) => {
         e.preventDefault();
 
@@ -50,7 +50,7 @@ const HeroesAddForm = () => {
             return <option>Ошибка загрузки</option>
         }
         if (filters && filters.length > 0) {
-            return filters.map(({value, text}) => {
+            return filters.map(({ value, text }) => {
                 //eslint-disable-next-line
                 if (value === 'all') return;
 
@@ -65,43 +65,43 @@ const HeroesAddForm = () => {
         <form className="border p-4 shadow-lg rounded" onSubmit={onHandleSubmit}>
             <div className="mb-3">
                 <label htmlFor="name" className="form-label fs-4">Имя нового героя</label>
-                <input 
+                <input
                     required
-                    type="text" 
-                    name="name" 
-                    className="form-control" 
-                    id="name" 
+                    type="text"
+                    name="name"
+                    className="form-control"
+                    id="name"
                     placeholder="Как меня зовут?"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    />
+                />
             </div>
 
             <div className="mb-3">
                 <label htmlFor="text" className="form-label fs-4">Описание</label>
                 <textarea
                     required
-                    name="text" 
-                    className="form-control" 
-                    id="text" 
+                    name="text"
+                    className="form-control"
+                    id="text"
                     placeholder="Что я умею?"
-                    style={{"height": '130px'}}
+                    style={{ "height": '130px' }}
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
-                    />
-                    
+                />
+
             </div>
 
             <div className="mb-3">
                 <label htmlFor="element" className="form-label">Выбрать элемент героя</label>
-                <select 
+                <select
                     required
-                    className="form-select" 
-                    id="element" 
+                    className="form-select"
+                    id="element"
                     name="element"
                     value={element}
                     onChange={(e) => setElement(e.target.value)}
-                    >
+                >
                     <option value="">Я владею элементом...</option>
                     {elements}
                 </select>

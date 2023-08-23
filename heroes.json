@@ -7,22 +7,22 @@
       "element": "fire"
     },
     {
-      "id": "7f52f83a500",
-      "name": "Water man",
-      "description": "Water balls",
-      "element": "water"
-    },
-    {
       "id": "f52f83a5004",
       "name": "Wind man",
       "description": "Wind balls",
       "element": "wind"
     },
     {
-      "id": "52f83a50049",
-      "name": "Earth man",
-      "description": "Earth balls",
+      "id": "35d5d740d8b",
+      "name": "asd",
+      "description": "asd",
       "element": "earth"
+    },
+    {
+      "id": "d5d740d8bae",
+      "name": "asd",
+      "description": "asd",
+      "element": "water"
     }
   ],
   "filters": [
