@@ -3,7 +3,8 @@ import { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createSelector } from 'reselect';
 
-import { fetchHeroes, heroesDelete } from '../../actions';
+import { fetchHeroes } from '../../actions/index';
+import { heroesDelete } from './heroesSlice';
 import HeroesListItem from "../heroesListItem/HeroesListItem";
 import Spinner from '../spinner/Spinner';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';

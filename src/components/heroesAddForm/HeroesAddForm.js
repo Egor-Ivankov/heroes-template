@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { heroesAdd } from "../../actions";
+import { heroesAdd } from "../heroesList/heroesSlice";
 import { useHttp } from "../../hooks/http.hook";
 import { uid } from "uid";
 
