@@ -1,27 +1,27 @@
 {
   "heroes": [
     {
-      "id": "43283818788",
-      "name": "asd",
-      "description": "asd",
+      "id": "2989b241239",
+      "name": "Fire hero",
+      "description": "Fireballs!",
       "element": "fire"
     },
     {
-      "id": "c816dd97653",
-      "name": "qwe",
-      "description": "qwe",
+      "id": "989b2412390",
+      "name": "Water man",
+      "description": "Like aquaman, but no",
       "element": "water"
     },
     {
-      "id": "0eeccc669f3",
-      "name": "asd",
-      "description": "asd",
+      "id": "89b2412390e",
+      "name": "Wind man",
+      "description": "Tornado",
       "element": "wind"
     },
     {
-      "id": "eeccc669f37",
-      "name": "asd",
-      "description": "asd",
+      "id": "9b2412390ea",
+      "name": "Earth man",
+      "description": "Golems",
       "element": "earth"
     }
   ],

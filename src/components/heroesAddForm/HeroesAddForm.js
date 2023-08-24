@@ -4,16 +4,6 @@ import { heroesAdd } from "../heroesList/heroesSlice";
 import { useHttp } from "../../hooks/http.hook";
 import { uid } from "uid";
 
-// Задача для этого компонента:
-// Реализовать создание нового героя с введенными данными. Он должен попадать
-// в общее состояние и отображаться в списке + фильт    роваться
-// Уникальный идентификатор персонажа можно сгенерировать через uiid
-// Усложненная задача:
-// Персонаж создается и в файле json при помощи метода POST
-// Дополнительно:
-// Элементы <option></option> желательно сформировать на базе
-// данных из фильтров
-
 const HeroesAddForm = () => {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
